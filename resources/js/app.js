@@ -8,6 +8,14 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+
+import swal from 'sweetalert';
+window.swal  = window.Swal = swal;
+
+import toastr from 'toastr';
+window.toastr  = window.toastr = toastr;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,6 +34,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 
 const app = new Vue({
     el: '#app',

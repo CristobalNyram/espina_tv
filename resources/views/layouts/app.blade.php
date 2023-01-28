@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -49,7 +51,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Sponsors') }}</a>
+                            <a class="nav-link" href="{{ route('admin.sponsor.index') }}">{{ __('Sponsors') }}</a>
                         </li>
 
                         <li class="nav-item dropdown">
