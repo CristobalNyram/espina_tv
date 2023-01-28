@@ -32,13 +32,29 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
 
-                    </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Radio') }}</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Galery') }}</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('General config') }}</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Sponsors') }}</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Video') }}</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -70,6 +86,7 @@
                                 </div>
                             </li>
                         @endguest
+
                     </ul>
                 </div>
             </div>
