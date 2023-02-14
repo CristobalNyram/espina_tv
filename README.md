@@ -48,7 +48,11 @@ npm run development
 **Server:** Laravel 8, PHP 
 
 
+## stepts to install pagebuildier
 
+https://github.com/HansSchouten/Laravel-Pagebuilder/issues/136
+
+edit file vendor and edit migrations of pagebuildier ,edit the lenght of columns unique
 
 ## Authors
 
