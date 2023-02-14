@@ -25,7 +25,7 @@ return [
      |
      */
     'storage' => [
-        'use_database' => true,
+        'use_database' => false,
         'database' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST').':'.env('DB_PORT',3306),
