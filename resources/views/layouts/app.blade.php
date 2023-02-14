@@ -40,23 +40,26 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Radio') }}</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Galery') }}</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('General config') }}</a>
-                        </li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Radio') }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Galery') }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('General config') }}</a>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('admin.sponsor.index') }}">{{ __('Sponsors') }}</a>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('admin.sponsor.index') }}">{{ __('Sponsors') }}</a>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Video') }}</a>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Video') }}</a>
+                            </li>
+                        @endauth
+
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -98,5 +101,11 @@
             @yield('content')
         </main>
     </div>
+
+
 </body>
 </html>
+@section('scripts')
+<script src="{{ asset('js/app.js') }}" defer></script>
+
+@endsection

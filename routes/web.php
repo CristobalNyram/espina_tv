@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::prefix('admin')->group(function () {
+    Auth::routes();
+    Route::get('/sponsors', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->name('admin.sponsor.index');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 
-Auth::routes();
-//routes for admin-start
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
-Route::get('/admin/sponsors', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->name('admin.sponsor.index');
+});
+
+//landing page
+Route::get('/', [App\Http\Controllers\Frontend\LadingpageController::class, 'index'])->name('ladingpage.index');
 
 //routes for admin-end
 

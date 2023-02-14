@@ -28,7 +28,9 @@ window.toastr  = window.toastr = toastr;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('index-sponsors', require('./components/Admin/Sponsor/Index.vue').default);
+Vue.component('edit-sponsors', require('./components/Admin/Sponsor/Edit.vue').default);
+Vue.component('create-sponsors', require('./components/Admin/Sponsor/Create.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Sponsors') }}</div>
 
                 <div class="card-body">
+                    <div id="app">
+                        <index-sponsors/>
+                    </div>
 
 
 
@@ -16,4 +19,5 @@
         </div>
     </div>
 </div>
+
 @endsection
