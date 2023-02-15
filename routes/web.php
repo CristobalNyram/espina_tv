@@ -22,7 +22,7 @@ Route::prefix('admin')->group(function () {
 });
 
 //landing page
-Route::get('/', [App\Http\Controllers\Frontend\LadingpageController::class, 'index'])->name('ladingpage.index');
+Route::get('/', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'index'])->name('ladingpage.index');
 
 //routes for admin-end
 
