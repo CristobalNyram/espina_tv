@@ -18,6 +18,7 @@ Route::prefix('admin')->group(function () {
     Auth::routes();
     Route::get('/sponsors', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->name('admin.sponsor.index');
     Route::get('/sponsors/list', [App\Http\Controllers\Admin\SponsorController::class, 'getSponsors'])->name('admin.sponsor.list');
+    Route::get('/sponsors/delete/{id}', [App\Http\Controllers\Admin\SponsorController::class, 'delete'])->name('admin.sponsor.delete');
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 

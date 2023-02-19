@@ -16,6 +16,13 @@ window.swal  = window.Swal = swal;
 
 import toastr from 'toastr';
 window.toastr  = window.toastr = toastr;
+
+import izitoast  from 'izitoast';
+window.izitoast   = window.izitoast  = izitoast;
+
+const Swal = require('sweetalert2');
+window.Swal   = window.Swal  = Swal;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

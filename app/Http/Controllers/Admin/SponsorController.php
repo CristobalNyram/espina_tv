@@ -70,7 +70,9 @@ class SponsorController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
+
     }
 
     /**
@@ -91,8 +93,24 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $answer=[];
+        $sponsor= $this->sponsors::findOrFail($id);
+        $sponsor->status=-2;
+
+        if($sponsor->update()){
+
+            $answer['status']=2;
+            $answer['message']='Sponsor deleted';
+            $answer['title']='Success';
+
+            return response()->json($answer);
+        }else{
+            $answer['status']=-2;
+            $answer['message']='Sponsor deleted';
+            $answer['title']='Error';
+            return response()->json($answer);
+        }
     }
 }
