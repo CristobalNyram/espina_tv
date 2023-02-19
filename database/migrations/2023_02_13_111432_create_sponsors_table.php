@@ -18,7 +18,7 @@ class CreateSponsorsTable extends Migration
             $table->string('name');
             $table->string('slug',25);
             $table->string('description')->nullable();
-            $table->string('time_support')->nullable();
+            $table->string('business_hours')->nullable();
             $table->string('logo_img')->nullable();
             $table->string('phone_number',20)->nullable();
             $table->string('address')->nullable();
