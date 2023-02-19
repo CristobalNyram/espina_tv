@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 
 class SponsorController extends Controller
 {
+
+    private $sponsors;
+
+    function __construct() {
+        $this->sponsors = new Sponsor();
+      }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +23,11 @@ class SponsorController extends Controller
     {
 
         return view('admin.sponsor.index');
+    }
+
+    public function getSponsors(){
+
+         return response()->json($this->sponsors->getAllSponsorsActive());
     }
 
     /**

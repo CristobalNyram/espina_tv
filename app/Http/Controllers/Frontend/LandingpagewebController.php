@@ -13,4 +13,12 @@ class LandingpagewebController extends Controller
 
         return view('ladingpage.index');
     }
+    public function services(){
+        return view('ladingpage.sponsor');
+
+    }
+    public function contact_us(){
+        return view('ladingpage.contact-us');
+
+    }
 }

@@ -2,17 +2,17 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
+      <h1 class="logo me-auto"><a >Espina TV</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="#about">Servicios</a></li>
-          <li><a class="nav-link scrollto" href="#services">Anunciate</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Blogs</a></li>
-          <li><a class="nav-link scrollto" href="#team">Galerías</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('ladingpage.index') }}">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('ladingpage.services') }}">Servicios</a></li>
+          <li><a class="nav-link scrollto"  href="{{ route('ladingpage.contact_us') }}" >Anunciate con nosotros</a></li>
+          <li><a class="nav-link   scrollto" href="#portfolio">Videoblogs</a></li>
+          <li><a class="nav-link scrollto" href="#team">Galleria</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -31,7 +31,7 @@
             </ul>
           </li> --}}
           {{-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
-          <li><a class="getstarted scrollto" href="#about">Sociales</a></li>
+          <li><a class="getstarted scrollto" href="#about">Invitaciones digitales</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

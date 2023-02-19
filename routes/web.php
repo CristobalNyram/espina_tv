@@ -17,12 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
     Auth::routes();
     Route::get('/sponsors', [App\Http\Controllers\Admin\SponsorController::class, 'index'])->name('admin.sponsor.index');
+    Route::get('/sponsors/list', [App\Http\Controllers\Admin\SponsorController::class, 'getSponsors'])->name('admin.sponsor.list');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 
 });
 
 //landing page
 Route::get('/', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'index'])->name('ladingpage.index');
+Route::get('/services', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'services'])->name('ladingpage.services');
+Route::get('/contact', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'contact_us'])->name('ladingpage.contact_us');
 
 //routes for admin-end
 

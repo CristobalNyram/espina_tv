@@ -8,6 +8,9 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:root{
+    --main-bg:#37517e;
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -150,7 +153,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -280,7 +283,7 @@ h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #fff;
@@ -537,10 +540,18 @@ section {
   overflow: hidden;
 }
 
+
 .section-bg {
   background-color: #f3f5fa;
 }
 
+.section-header {
+    background-color: var(--main-bg);
+  }
+.section-header-container {
+    padding: 40px 0;
+    overflow: hidden;
+}
 .section-title {
   text-align: center;
   padding-bottom: 30px;

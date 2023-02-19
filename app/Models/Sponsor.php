@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsor extends Model
 {
     use HasFactory;
+
+
+
+    public function getAllSponsorsActive(){
+
+        return $this->all()->where('status','=','2');
+    }
 }

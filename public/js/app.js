@@ -5385,6 +5385,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! process */ "./node_modules/process/browser.js");
+/* harmony import */ var process__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(process__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5412,7 +5427,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      title_columns: ['Name', 'Descriptions', 'Options'],
+      sponsors: [],
+      BASE_URL: window.location.origin
+    };
+  },
+  created: function created() {
+    this.getSponsors();
+  },
+  mounted: function mounted() {
+    // this.ini();
+  },
+  methods: {
+    // ini()
+    getSponsors: function getSponsors() {
+      var _this = this;
+      axios.get(this.BASE_URL + "/admin/sponsors/list").then(function (response) {
+        _this.sponsors = response.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -40090,32 +40129,47 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("table", { staticClass: "table" }, [
-        _c("thead", { staticClass: "thead-dark" }, [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Descripción")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Opciones")]),
+  return _c("div", { staticClass: "container" }, [
+    _c("table", { staticClass: "table" }, [
+      _c("thead", { staticClass: "thead-dark" }, [
+        _c("tr", [
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [
+            _vm._v(_vm._s(_vm.title_columns[0])),
+          ]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [
+            _vm._v(_vm._s(_vm.title_columns[1])),
+          ]),
+          _vm._v(" "),
+          _c("th", { attrs: { scope: "col" } }, [
+            _vm._v(_vm._s(_vm.title_columns[2])),
           ]),
         ]),
         _vm._v(" "),
-        _c("tbody"),
+        _c(
+          "tbody",
+          _vm._l(_vm.sponsors, function (item, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [_vm._v(_vm._s(item.id))]),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td"),
+              _vm._v(" "),
+              _c("td"),
+            ])
+          }),
+          0
+        ),
       ]),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c("tbody"),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
