@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Phone number:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <input type="text" class="form-control" id="recipient-name">
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Address:</label>

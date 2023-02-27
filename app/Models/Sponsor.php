@@ -11,8 +11,8 @@ class Sponsor extends Model
 
 
 
-    public function getAllSponsorsActive(){
+    public function getAllSponsorsActiveAndInActive(){
 
-        return $this->all()->where('status','=','2');
+        return $this->all()->where('status','>=','-1');
     }
 }

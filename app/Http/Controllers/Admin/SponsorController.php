@@ -27,7 +27,7 @@ class SponsorController extends Controller
 
     public function getSponsors(){
 
-         return response()->json($this->sponsors->getAllSponsorsActive());
+         return response()->json($this->sponsors->getAllSponsorsActiveAndInActive());
     }
 
     /**
@@ -108,7 +108,49 @@ class SponsorController extends Controller
             return response()->json($answer);
         }else{
             $answer['status']=-2;
-            $answer['message']='Sponsor deleted';
+            $answer['message']='Error in the process';
+            $answer['title']='Error';
+            return response()->json($answer);
+        }
+    }
+
+    public function desactive($id)
+    {
+        $answer=[];
+        $sponsor= $this->sponsors::findOrFail($id);
+        $sponsor->status=-1;
+
+        if($sponsor->update()){
+
+            $answer['status']=2;
+            $answer['message']='Sponsor deactived';
+            $answer['title']='Success';
+
+            return response()->json($answer);
+        }else{
+            $answer['status']=-2;
+            $answer['message']='Error in the process';
+            $answer['title']='Error';
+            return response()->json($answer);
+        }
+    }
+
+    public function active($id)
+    {
+        $answer=[];
+        $sponsor= $this->sponsors::findOrFail($id);
+        $sponsor->status=2;
+
+        if($sponsor->update()){
+
+            $answer['status']=2;
+            $answer['message']='Sponsor actived';
+            $answer['title']='Success';
+
+            return response()->json($answer);
+        }else{
+            $answer['status']=-2;
+            $answer['message']='Error in the process';
             $answer['title']='Error';
             return response()->json($answer);
         }

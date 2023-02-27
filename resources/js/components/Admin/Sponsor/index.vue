@@ -21,15 +21,24 @@
 
                         <td>
 
-                            <button type="button" class="btn btn-primary">
+                            <button title="Edit" type="button" class="btn btn-primary">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
-                            <button type="button" class="btn btn-warning">
+                            <button title="Add photo to Gallery" type="button" class="btn btn-warning">
                                 <i class="bi bi-camera2"></i>
                             </button>
-                            <button type="button" class="btn btn-danger"  v-on:click="delete_sponsor(sponsor.id)">
+                            <button title="Delete" type="button" class="btn btn-danger"  v-on:click="delete_sponsor(sponsor.id)">
                             <i class="bi bi-trash"></i>
-                           </button>
+                            </button>
+                            <button title="Desactive" type="button" class="btn  btn-warning"  v-if="sponsor.status==2"  v-on:click="desactive_sponsor(sponsor.id)">
+                            <i class="bi bi-camera-video-off"></i>
+                            </button>
+
+                            <button title="Active" type="button" class="btn   btn-success"   v-if="sponsor.status==-1"  v-on:click="active_sponsor(sponsor.id)">
+                            <i class="bi bi-camera-video"></i>
+
+
+                            </button>
 
 
                         </td>
@@ -70,6 +79,9 @@ import { title } from 'process';
             mounted() {
                 // this.ini();
             },
+            computed: {
+
+            },
             methods: {
                 // ini()
                 getSponsors() {
@@ -99,6 +111,86 @@ import { title } from 'process';
                                 case "delete":
 
                                 axios.get(this.BASE_URL + `/admin/sponsors/delete/${id}`, {
+                                    _token: "{{ csrf_token() }}",
+                                }).then(response => {
+                                    this.getSponsors();
+
+                                    if(response.data.status=='2'){
+                                        toastr.success(response.data.message);
+
+                                    }else{
+                                        toastr.warning(response.data.message);
+
+                                    }
+
+                                });
+
+                                break;
+
+                                default:
+                                swal("Action canceled");
+                            }
+                            });
+                },
+                desactive_sponsor(id){
+
+                    swal("Do you want to desactive this sponsor?", {
+                            buttons: {
+                                cancel: "Cancel",
+                                catch: {
+                                text: "Yes, deactive!",
+                                value: "delete",
+                                },
+                            },
+                            })
+                            .then((value) => {
+                            switch (value) {
+
+
+
+                                case "delete":
+
+                                axios.get(this.BASE_URL + `/admin/sponsors/desactive/${id}`, {
+                                    _token: "{{ csrf_token() }}",
+                                }).then(response => {
+                                    this.getSponsors();
+
+                                    if(response.data.status=='2'){
+                                        toastr.success(response.data.message);
+
+                                    }else{
+                                        toastr.warning(response.data.message);
+
+                                    }
+
+                                });
+
+                                break;
+
+                                default:
+                                swal("Action canceled");
+                            }
+                            });
+                },
+                  active_sponsor(id){
+
+                    swal("Do you want to active this sponsor?", {
+                            buttons: {
+                                cancel: "Cancel",
+                                catch: {
+                                text: "Yes, active!",
+                                value: "delete",
+                                },
+                            },
+                            })
+                            .then((value) => {
+                            switch (value) {
+
+
+
+                                case "delete":
+
+                                axios.get(this.BASE_URL + `/admin/sponsors/active/${id}`, {
                                     _token: "{{ csrf_token() }}",
                                 }).then(response => {
                                     this.getSponsors();
