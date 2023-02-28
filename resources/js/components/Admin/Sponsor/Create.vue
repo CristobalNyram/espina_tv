@@ -20,6 +20,7 @@
                     <div class="modal-body">
                         <form  method="post"  id="form_create_sponsor" >
 
+                            <input type="hidden" class="form-control" id="recipient-name" name="_token"  v-model="form._token">
 
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Name:</label>
@@ -74,8 +75,8 @@
                     "description":"",
                     "time_support":"",
                     "address":"",
-                    "email":""
-
+                    "email":"",
+                    "_token":""
 
 
                 },
@@ -84,14 +85,16 @@
                 submitted:false,
                 successfull:false,
                 url_post:'',
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
 
             },
 
             created() {
-
+                this.form._token=this.csrf
             },
             mounted() {
+
 
             },
             computed: {
@@ -102,14 +105,11 @@
                 save_sponsor(){
 
 
-                    axios.post(this.BASE_URL+'/user',
-                    {
-                        name:'prueba',
-                        _token: "{{ csrf_token() }}",
 
-                    }
-                    ).then(response => {
-                        console.log(response.data);
+                    axios.post(this.BASE_URL + `/admin/sponsors/store`,this.form).then(response => {
+
+                                    console.log(response);
+
                     });
 
                 }

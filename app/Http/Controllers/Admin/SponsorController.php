@@ -46,9 +46,9 @@ class SponsorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        return response()->json('hola');
+        return json_encode($request->all());
 
     }
 

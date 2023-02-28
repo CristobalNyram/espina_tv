@@ -27,10 +27,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home');
 
 });
-Route::post('/user', function () {
-    return json_encode('hola');
 
-});
 //landing page
 Route::get('/', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'index'])->name('ladingpage.index');
 Route::get('/services', [App\Http\Controllers\Frontend\LandingpagewebController::class, 'services'])->name('ladingpage.services');

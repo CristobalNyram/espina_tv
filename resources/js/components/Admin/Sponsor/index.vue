@@ -68,7 +68,8 @@ import { title } from 'process';
                         'Options'
                     ],
                     sponsors: [],
-                    BASE_URL: window.location.origin
+                    BASE_URL: window.location.origin,
+                    csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
                 }
             },
@@ -111,7 +112,7 @@ import { title } from 'process';
                                 case "delete":
 
                                 axios.get(this.BASE_URL + `/admin/sponsors/delete/${id}`, {
-                                    _token: "{{ csrf_token() }}",
+                                    _token: this.csrf,
                                 }).then(response => {
                                     this.getSponsors();
 
@@ -151,7 +152,7 @@ import { title } from 'process';
                                 case "delete":
 
                                 axios.get(this.BASE_URL + `/admin/sponsors/desactive/${id}`, {
-                                    _token: "{{ csrf_token() }}",
+                                    _token: this.csrf,
                                 }).then(response => {
                                     this.getSponsors();
 
@@ -191,7 +192,7 @@ import { title } from 'process';
                                 case "delete":
 
                                 axios.get(this.BASE_URL + `/admin/sponsors/active/${id}`, {
-                                    _token: "{{ csrf_token() }}",
+                                    _token: this.csrf,
                                 }).then(response => {
                                     this.getSponsors();
 
