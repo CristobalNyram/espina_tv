@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sponsor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class SponsorController extends Controller
 {
@@ -48,7 +51,45 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        return json_encode($request->all());
+       /* $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:sponsors,email',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'description'=>'required',
+            'address' => 'required',
+            'time_support' => 'required'
+         ]);*/
+
+
+
+        $sponsor = new Sponsor();
+        $sponsor->name=$request->name;
+        $slug = SlugService::createSlug(Sponsor::class, 'slug',$sponsor->name);
+        $sponsor->slug=$slug;
+        $sponsor->description=$request->description;
+        $sponsor->time_support=$request->time_support;
+        $sponsor->phone_number=$request->phone_number;
+        $sponsor->address=$request->address;
+        $sponsor->email=now();
+        $sponsor->status='2';
+
+        if($sponsor->save()){
+            $answer['status']=2;
+            $answer['title']='success';
+            $answer['message']='New Sponsor';
+
+            return response()->json($answer);
+
+
+
+        }else{
+            $answer['status']=-2;
+            $answer['title']='error';
+            $answer['message']='erro Sponsor';
+            return json_encode($answer);
+
+        }
+
 
     }
 

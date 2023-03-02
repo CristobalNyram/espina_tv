@@ -23,6 +23,9 @@ window.izitoast   = window.izitoast  = izitoast;
 const Swal = require('sweetalert2');
 window.Swal   = window.Swal  = Swal;
 
+
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -37,7 +40,7 @@ window.Swal   = window.Swal  = Swal;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('index-sponsors', require('./components/Admin/Sponsor/Index.vue').default);
 Vue.component('edit-sponsors', require('./components/Admin/Sponsor/Edit.vue').default);
-Vue.component('create-sponsors', require('./components/Admin/Sponsor/Create.vue').default);
+Vue.component('CreateSponsors', require('./components/Admin/Sponsor/Create.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -1,6 +1,16 @@
 <template>
-    <div class="container " >
 
+    <div class="container " >
+        <div class="d-flex justify-content-end  pb-1 pt-1 ">
+
+                    <div class='m-2'>
+                        <div id="app">
+                            <CreateSponsors/>
+                        </div>
+
+                    </div>
+
+        </div>
 
         <table class="table">
             <thead class="thead-dark">
@@ -57,9 +67,12 @@
 </template>
 
 <script>
-import { title } from 'process';
+
+import CreateSponsors from './Create.vue';
 
     export default {
+            components:{CreateSponsors},
+
             data() {
                 return {
                     title_columns:[
@@ -152,7 +165,7 @@ import { title } from 'process';
                                 case "delete":
 
                                 axios.get(this.BASE_URL + `/admin/sponsors/desactive/${id}`, {
-                                    _token: this.csrf,
+                                    _token: this.csrf
                                 }).then(response => {
                                     this.getSponsors();
 

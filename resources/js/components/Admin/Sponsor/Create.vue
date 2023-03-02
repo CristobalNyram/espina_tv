@@ -18,35 +18,36 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+
                         <form  method="post"  id="form_create_sponsor" >
 
-                            <input type="hidden" class="form-control" id="recipient-name" name="_token"  v-model="form._token">
+                            <input type="hidden" class="form-control" id="_token" name="_token" :value="csrf">
 
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="name"  v-model="form.name">
+                            <input type="text" class="form-control" id="recipient-name" name="name"  maxlength="155"  v-model="form.name">
                         </div>
 
 
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Business hours:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="time_support" v-model="form.time_support">
+                            <input type="text" class="form-control" id="recipient-name" name="time_support"  maxlength="50"  v-model="form.time_support">
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Phone number:</label>
-                            <input type="number" class="form-control" id="recipient-name" name="phone_number" v-model="form.phone_number">
+                            <input  type="number" class="form-control" id="recipient-name" name="phone_number"  maxlength="20" v-model="form.phone_number">
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Address:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="address" v-model="form.address">
+                            <input type="text" class="form-control" id="recipient-name" name="address"  maxlength="155" v-model="form.address">
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="recipient-name" name="email"  v-model="form.email">
+                            <input type="email" class="form-control" id="recipient-name" name="email"  maxlength="155"  v-model="form.email">
                         </div>
                         <div class="mb-3">
                             <label for="message-text" class="col-form-label">Description:</label>
-                            <textarea class="form-control" id="message-text" name="description" v-model="form.description"></textarea>
+                            <textarea class="form-control" id="message-text" name="description"  maxlength="255"  v-model="form.description"></textarea>
                         </div>
                         </form>
                     </div>
@@ -70,6 +71,9 @@
     export default {
             data() {
                 return {
+                    bodyFormData : new FormData(),
+
+
                     form:{
                     "name":"",
                     "description":"",
@@ -85,6 +89,7 @@
                 submitted:false,
                 successfull:false,
                 url_post:'',
+                form_serealize_data:'',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 }
 
@@ -92,6 +97,7 @@
 
             created() {
                 this.form._token=this.csrf
+
             },
             mounted() {
 
@@ -105,13 +111,49 @@
                 save_sponsor(){
 
 
+                    // https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data
 
-                    axios.post(this.BASE_URL + `/admin/sponsors/store`,this.form).then(response => {
+                    //
+                   axios.post(this.BASE_URL + `/admin/sponsors/store`,
+                    {
+                         'name': this.form.name,
+                         'description': this.form.description,
+                         'time_support': this.form.time_support,
+                         'phone_number': this.form.phone_number,
+                         'address': this.form.address,
+                         'email':this.form.email,
+                        '_token':  this.form._token
+                    },
 
-                                    console.log(response);
+                    ).then(response => {
 
+                                     if(response.data.status=='2'){
+                                        toastr.success(response.data.message);
+
+                                    }else{
+                                        toastr.warning(response.data.message);
+
+                                    }
+                    })
+                    .catch(function (error) {
+                                     console.log(error);
                     });
 
+
+
+                /*    $.ajax({
+                    url         :   this.BASE_URL + `/admin/sponsors/store`,
+                    type        :   'post',
+                    dataType    :   'json',
+                    data        :   {
+                        'body'  :   this.form,
+                        '_token':   this._token,
+                    },
+                    done: function (data) {
+                        console.log(data);
+                    }
+
+                     });*/
                 }
 
 

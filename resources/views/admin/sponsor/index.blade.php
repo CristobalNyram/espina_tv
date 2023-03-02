@@ -10,16 +10,7 @@
 
 
 
-                <div class="d-flex justify-content-end  pb-1 pt-1 ">
 
-                    <div class='m-2'>
-                        <div id="app">
-                            <create-sponsors/>
-                        </div>
-
-                    </div>
-
-                </div>
                 <div class="card-body">
                     <div id="app">
                         <index-sponsors/>

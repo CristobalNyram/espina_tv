@@ -11,6 +11,20 @@ class Sponsor extends Model
     use HasFactory;
     use Sluggable;
 
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'time_support',
+        'logo_img',
+        'phone_number',
+        'address',
+        'email',
+
+
+    ];
+
     /**
      * Return the sluggable configuration array for this model.
      *
