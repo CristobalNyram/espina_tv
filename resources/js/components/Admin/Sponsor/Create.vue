@@ -69,6 +69,9 @@
 
 <script>
     export default {
+            props: {
+                get_sponsor: { type: Function },
+            },
             data() {
                 return {
                     bodyFormData : new FormData(),
@@ -129,7 +132,7 @@
 
                                      if(response.data.status=='2'){
                                         toastr.success(response.data.message);
-
+                                        this.get_sponsor();
                                     }else{
                                         toastr.warning(response.data.message);
 

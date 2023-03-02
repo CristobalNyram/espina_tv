@@ -5,7 +5,7 @@
 
                     <div class='m-2'>
                         <div id="app">
-                            <CreateSponsors/>
+                            <CreateSponsors :get_sponsor="getSponsors"/>
                         </div>
 
                     </div>
