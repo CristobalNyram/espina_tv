@@ -93,7 +93,9 @@
                 successfull:false,
                 url_post:'',
                 form_serealize_data:'',
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                errors_field:[]
+
                 }
 
             },
@@ -112,7 +114,7 @@
             methods: {
 
                 save_sponsor(){
-
+                    // https://www.youtube.com/watch?v=25JbDjHWzsE
 
                     // https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data
 
@@ -138,25 +140,14 @@
 
                                     }
                     })
-                    .catch(function (error) {
-                                     console.log(error);
+                    .catch(function (e) {
+
+                                // console.log(e.response.);
+                                     if(e.response.status==422 ){
+                                     console.log(e.response.data.errors);
+                                        this.errors_field=e.response.data.errors;
+                                     }
                     });
-
-
-
-                /*    $.ajax({
-                    url         :   this.BASE_URL + `/admin/sponsors/store`,
-                    type        :   'post',
-                    dataType    :   'json',
-                    data        :   {
-                        'body'  :   this.form,
-                        '_token':   this._token,
-                    },
-                    done: function (data) {
-                        console.log(data);
-                    }
-
-                     });*/
                 }
 
 

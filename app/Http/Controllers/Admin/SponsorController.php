@@ -51,14 +51,14 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-       /* $this->validate($request, [
+         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:sponsors,email',
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'description'=>'required',
             'address' => 'required',
             'time_support' => 'required'
-         ]);*/
+         ]);
 
 
 
