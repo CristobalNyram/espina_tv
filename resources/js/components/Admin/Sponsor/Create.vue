@@ -20,6 +20,11 @@
                     <div class="modal-body">
 
                         <form  method="post"  id="form_create_sponsor" >
+                         <div v-for="(errorArray, idx) in notifmsg" :key="idx">
+                            <div v-for="(allErrors, idx) in errorArray" :key="idx">
+                                <span class="text-danger">{{ allErrors}} </span>
+                            </div>
+                        </div>
 
                             <input type="hidden" class="form-control" id="_token" name="_token" :value="csrf">
 
@@ -74,7 +79,8 @@
             },
             data() {
                 return {
-                    bodyFormData : new FormData(),
+
+                    notifmsg :'',
 
 
                     form:{
@@ -84,17 +90,12 @@
                     "address":"",
                     "email":"",
                     "_token":""
+                    },
 
-
-                },
-                BASE_URL: window.location.origin,
-                message:'',
-                submitted:false,
-                successfull:false,
-                url_post:'',
-                form_serealize_data:'',
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                errors_field:[]
+                    BASE_URL: window.location.origin,
+                    url_post:'',
+                    csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    form_html: document.getElementById('form_create_sponsor')
 
                 }
 
@@ -102,7 +103,6 @@
 
             created() {
                 this.form._token=this.csrf
-
             },
             mounted() {
 
@@ -113,12 +113,13 @@
             },
             methods: {
 
+                reset_form_success_process(){
+
+                },
+
+
                 save_sponsor(){
-                    // https://www.youtube.com/watch?v=25JbDjHWzsE
 
-                    // https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data
-
-                    //
                    axios.post(this.BASE_URL + `/admin/sponsors/store`,
                     {
                          'name': this.form.name,
@@ -134,20 +135,26 @@
 
                                      if(response.data.status=='2'){
                                         toastr.success(response.data.message);
-                                        this.get_sponsor();
+                                        this.reset_form_success_process();
+
                                     }else{
                                         toastr.warning(response.data.message);
 
                                     }
                     })
-                    .catch(function (e) {
+                    .catch(e=>{
 
-                                // console.log(e.response.);
-                                     if(e.response.status==422 ){
-                                     console.log(e.response.data.errors);
-                                        this.errors_field=e.response.data.errors;
-                                     }
+                        if(e.response.status==422 ){
+
+
+                            this.notifmsg = e.response.data.errors;
+
+
+
+                        }
+
                     });
+
                 }
 
 
